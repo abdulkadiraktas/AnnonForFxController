@@ -14,3 +14,53 @@ RegisterCommand("kickplayerforfxcontroller", function(source,args,raw)
 		DropPlayer(id,reason)		
 	--end
 end, false)
+
+
+
+ --Deneme amaçlı
+RegisterCommand("kickplayerforfxcontroller", function(source,args,raw)
+	local Source = args[1]
+	TriggerEvent('es:getPlayerFromId', source, function(user)
+		TriggerEvent('es:getPlayerFromId', args[1], function(target)
+			TriggerEvent('es:canGroupTarget', user.getGroup(), groupsRequired[args[2]], function(available)
+				TriggerEvent('es:canGroupTarget', user.getGroup(), target.getGroup(), function(canTarget)
+					if canTarget and available then
+						if args[2] == "ban" then
+							local id
+							local ip
+							for k,v in ipairs(GetPlayerIdentifiers(source))do
+								if string.sub(v, 1, string.len("steam:")) == "steam:" then
+									permBanUser("Qadir", v)
+								elseif string.sub(v, 1, string.len("ip:")) == "ip:" then
+									permBanUser("Qadir", v)
+								end
+							end
+
+							DropPlayer(id, GetConvar("es_admin_banreason", "You were banned from this server"))
+						end
+					else
+						if not available then
+							TriggerClientEvent('chat:addMessage', Source, {
+								args = {"^1SYSTEM", "You do not have permission to do this"}
+							})
+						else
+							TriggerClientEvent('chat:addMessage', Source, {
+								args = {"^1SYSTEM", "You do not have permission to do this"}
+							})
+						end
+					end
+				end)
+			end)
+		end)
+	end)
+end)
+
+function permBanUser(bannedBy, id)
+	bannedTable[id] = {
+		banner = bannedBy,
+		reason = "Permanently banned from this server",
+		expire = 0
+	}
+
+	SaveResourceFile(GetCurrentResourceName(), "bans.json", json.encode(bannedTable), -1)
+end
