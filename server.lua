@@ -8,3 +8,9 @@ RegisterCommand("announce", function(source,args,raw)
 	--end
 end, false)
 
+RegisterCommand("kickplayerforfxcontroller", function(source,args,raw) 
+	--if IsPlayerAceAllowed(source,"command")then
+		local id, reason = tonumber(args[1]), args[2]
+		DropPlayer(id,reason)		
+	--end
+end, false)
