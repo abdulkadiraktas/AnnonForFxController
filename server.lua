@@ -1,4 +1,4 @@
-local realhash = "IMN1c9Uqbb"
+local realhash = "Changethispart"
 
 RegisterCommand("announce", function(source, args, raw) 
     local hash = args[1] 
