@@ -1,4 +1,4 @@
-local realhash = "IMN1c9Uqbb"
+local realhash = "Please-Change"
 
 RegisterCommand("announce", function(source, args, raw)
     -- if IsPlayerAceAllowed(source,"command")then
