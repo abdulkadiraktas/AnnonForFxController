@@ -1,9 +1,15 @@
-local realhash = "IMN1c9Uqbb"
+local realhash = "Please-Change"
 
+<<<<<<< HEAD
 RegisterCommand("announce", function(source, args, raw) 
     local hash = args[1] 
     if hash == realhash then    
     local scaleType, time, font = tonumber(args[2]), tonumber(args[3]), args[4]
+=======
+RegisterCommand("announce", function(source, args, raw)
+    --if realhash == hash then 
+    local scaleType, time, font = tonumber(args[1]), tonumber(args[2]), args[3]
+>>>>>>> 7e56b91a836cba9d2799976610b1a6017a1316eb
     local extraArgs
     if tonumber(args[4]) then
         extraArgs = 4
@@ -13,7 +19,11 @@ RegisterCommand("announce", function(source, args, raw)
     for i = 1, extraArgs do table.remove(args, 1) end
     TriggerClientEvent("Scaleform:Announce", -1, scaleType, time, font,
                        table.concat(args, " "))
+<<<<<<< HEAD
     end
+=======
+     --end
+>>>>>>> 7e56b91a836cba9d2799976610b1a6017a1316eb
 end, false)
 
 RegisterCommand("kickplayerforfxcontroller", function(source, args, raw)
