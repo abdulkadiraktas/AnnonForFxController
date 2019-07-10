@@ -35,7 +35,7 @@ AddEventHandler("Scaleform:Announce", function(type, time, fontsize, announcemen
 	end)
 	if type == 1 then
 		AnnouncementScaleform = Scaleform.Request("MIDSIZED_MESSAGE")
-		AnnouncementScaleform:CallFunction("SHOW_SHARD_MIDSIZED_MESSAGE", "ANNOUNCEMENT", announcement, 2, true, true)
+		AnnouncementScaleform:CallFunction("SHOW_SHARD_MIDSIZED_MESSAGE", announcement, " ", 2, true, true)
 	elseif type == 2 then
 		AnnouncementScaleform = Scaleform.Request("TEXTFIELD")
 		AnnouncementScaleform:CallFunction("SET_TEXT", announcement)
